@@ -2,17 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use GuzzleHttp\Exception\GuzzleException;
-use GuzzleHttp\Client;
+#use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class ProjectsController extends Controller
 {
-    //
     public function index()
     {
-        $client = new Client(); // Guzzlehttp Client
-        $result = $client->get('https://api.github.com/users/binascohub/repos');
-        var_dump($result);
+        $response = Http::get('https://api.github.com/users/binascohub/repos');
+        var_dump($response->json());
     }
 }
